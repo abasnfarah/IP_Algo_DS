@@ -1,5 +1,7 @@
+package InterviewPrep;
+
 import java.io.*;
-import java.utils.*;
+import java.util.*;
 
 public class BinarySearch {
 

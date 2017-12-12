@@ -1,3 +1,5 @@
+package InterviewPrep;
+
 import java.io.*;
 import java.util.*;
 
@@ -223,7 +225,7 @@ public class LinkedList<E> {
         // Check if index is out of bounds
         if(index < 0 || index >= this.size()){
 
-            return null;
+            return false;
 
         } else {
 
@@ -237,12 +239,12 @@ public class LinkedList<E> {
                 ptr = ptr.getNext();
             }
 
-            if(index = 0){
+            if(index == 0){
                 head = head.getNext();
-                return;
+                return true;
             } else {
                 trl.setNext(ptr.getNext());
-                return;
+                return true;
             }
             
         }
@@ -260,6 +262,8 @@ public class LinkedList<E> {
         l.printList();
         System.out.println();
         System.out.println("This is the 3rd element: " + l.get(3));
+        l.remove(4);
+        l.printList();
 
     }
 
