@@ -1,0 +1,94 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ArrayStack	Algorithms_Data_Structures/Stacks/ArrayStack.java	/^    public ArrayStack(){$/;"	m	class:ArrayStack
+ArrayStack	Algorithms_Data_Structures/Stacks/ArrayStack.java	/^    public ArrayStack(int data){$/;"	m	class:ArrayStack
+ArrayStack	Algorithms_Data_Structures/Stacks/ArrayStack.java	/^public class ArrayStack{$/;"	c
+Arrays	Algorithms_Data_Structures/Arrays/Arrays.java	/^   public Arrays(){$/;"	m	class:Arrays
+Arrays	Algorithms_Data_Structures/Arrays/Arrays.java	/^   public Arrays(int[] arr){$/;"	m	class:Arrays
+Arrays	Algorithms_Data_Structures/Arrays/Arrays.java	/^public class Arrays{    $/;"	c
+BinarySearch	Algorithms_Data_Structures/BinarySearch/BinarySearch.java	/^    public BinarySearch(){$/;"	m	class:BinarySearch
+BinarySearch	Algorithms_Data_Structures/BinarySearch/BinarySearch.java	/^    public BinarySearch(int[] arr){$/;"	m	class:BinarySearch
+BinarySearch	Algorithms_Data_Structures/BinarySearch/BinarySearch.java	/^    public int BinarySearch(int[] arr, int n, int x){$/;"	m	class:BinarySearch
+BinarySearch	Algorithms_Data_Structures/BinarySearch/BinarySearch.java	/^public class BinarySearch {$/;"	c
+InterviewPrep	Algorithms_Data_Structures/Arrays/Arrays.java	/^package InterviewPrep;$/;"	p
+InterviewPrep	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^package InterviewPrep;$/;"	p
+InterviewPrep	Algorithms_Data_Structures/BinarySearch/BinarySearch.java	/^package InterviewPrep;$/;"	p
+InterviewPrep	Algorithms_Data_Structures/Lists/LinkedList.java	/^package InterviewPrep;$/;"	p
+InterviewPrep	Algorithms_Data_Structures/Math/MathCode.java	/^package InterviewPrep;$/;"	p
+LinkedList	Algorithms_Data_Structures/Lists/LinkedList.java	/^    public LinkedList(){$/;"	m	class:LinkedList
+LinkedList	Algorithms_Data_Structures/Lists/LinkedList.java	/^    public LinkedList(E data){$/;"	m	class:LinkedList
+LinkedList	Algorithms_Data_Structures/Lists/LinkedList.java	/^    public LinkedList(LinkedList<E> newList){$/;"	m	class:LinkedList
+LinkedList	Algorithms_Data_Structures/Lists/LinkedList.java	/^    public LinkedList(Node<E> node){$/;"	m	class:LinkedList
+LinkedList	Algorithms_Data_Structures/Lists/LinkedList.java	/^public class LinkedList<E> {$/;"	c
+MathCode	Algorithms_Data_Structures/Math/MathCode.java	/^    public MathCode(){$/;"	m	class:MathCode
+MathCode	Algorithms_Data_Structures/Math/MathCode.java	/^    public MathCode(int imput){$/;"	m	class:MathCode
+MathCode	Algorithms_Data_Structures/Math/MathCode.java	/^public class MathCode {$/;"	c
+Node	Algorithms_Data_Structures/Lists/LinkedList.java	/^        public Node(){$/;"	m	class:LinkedList.Node
+Node	Algorithms_Data_Structures/Lists/LinkedList.java	/^        public Node(E newData){$/;"	m	class:LinkedList.Node
+Node	Algorithms_Data_Structures/Lists/LinkedList.java	/^        public Node(E newData, Node<E> newNext){$/;"	m	class:LinkedList.Node
+Node	Algorithms_Data_Structures/Lists/LinkedList.java	/^    public class Node<E> { $/;"	c	class:LinkedList
+SortingAlgorithms	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^    public SortingAlgorithms(){$/;"	m	class:SortingAlgorithms
+SortingAlgorithms	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^    public SortingAlgorithms(int[] a, int s){    $/;"	m	class:SortingAlgorithms
+SortingAlgorithms	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^public class SortingAlgorithms {$/;"	c
+add	Algorithms_Data_Structures/Lists/LinkedList.java	/^    public void add(E data){$/;"	m	class:LinkedList
+add	Algorithms_Data_Structures/Lists/LinkedList.java	/^    public void add(Node<E> N){$/;"	m	class:LinkedList
+allFactors	Algorithms_Data_Structures/Math/MathCode.java	/^    public int[] allFactors(int N){$/;"	m	class:MathCode
+arrStack	Algorithms_Data_Structures/Stacks/ArrayStack.java	/^    private int arrStack[];$/;"	f	class:ArrayStack	file:
+array	Algorithms_Data_Structures/Arrays/Arrays.java	/^   private int[] array; $/;"	f	class:Arrays	file:
+array	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^    private int[] array;$/;"	f	class:SortingAlgorithms	file:
+array	Algorithms_Data_Structures/BinarySearch/BinarySearch.java	/^    private int[] array;$/;"	f	class:BinarySearch	file:
+data	Algorithms_Data_Structures/Lists/LinkedList.java	/^        public E data; $/;"	f	class:LinkedList.Node
+get	Algorithms_Data_Structures/Lists/LinkedList.java	/^    public E get(int index){$/;"	m	class:LinkedList
+getArray	Algorithms_Data_Structures/Arrays/Arrays.java	/^   public int[] getArray(){$/;"	m	class:Arrays
+getArray	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^    public int[] getArray(){$/;"	m	class:SortingAlgorithms
+getArray	Algorithms_Data_Structures/BinarySearch/BinarySearch.java	/^    public int[] getArray(){$/;"	m	class:BinarySearch
+getData	Algorithms_Data_Structures/Lists/LinkedList.java	/^        public E getData(){$/;"	m	class:LinkedList.Node
+getHead	Algorithms_Data_Structures/Lists/LinkedList.java	/^    public Node<E> getHead(){$/;"	m	class:LinkedList
+getNext	Algorithms_Data_Structures/Lists/LinkedList.java	/^        public Node<E> getNext(){$/;"	m	class:LinkedList.Node
+getSize	Algorithms_Data_Structures/Stacks/ArrayStack.java	/^    public int getSize(){$/;"	m	class:ArrayStack
+getSort	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^    public int getSort(){$/;"	m	class:SortingAlgorithms
+getStack	Algorithms_Data_Structures/Stacks/ArrayStack.java	/^    public int[] getStack(){$/;"	m	class:ArrayStack
+getTail	Algorithms_Data_Structures/Lists/LinkedList.java	/^    public Node<E> getTail(){$/;"	m	class:LinkedList
+getVar	Algorithms_Data_Structures/Math/MathCode.java	/^    public int getVar(){$/;"	m	class:MathCode
+head	Algorithms_Data_Structures/Lists/LinkedList.java	/^    private Node<E> head;$/;"	f	class:LinkedList	file:
+insert	Algorithms_Data_Structures/Lists/LinkedList.java	/^    public void insert(int index, E data){$/;"	m	class:LinkedList
+insertionSort	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^    public int[] insertionSort(int[] arr){        $/;"	m	class:SortingAlgorithms
+isPrime	Algorithms_Data_Structures/Math/MathCode.java	/^    public boolean isPrime(int N){$/;"	m	class:MathCode
+main	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^    public static void main(String args[])$/;"	m	class:SortingAlgorithms
+main	Algorithms_Data_Structures/BinarySearch/BinarySearch.java	/^    public static void main(String[] args){$/;"	m	class:BinarySearch
+main	Algorithms_Data_Structures/Lists/LinkedList.java	/^    public static void main(String[] args){$/;"	m	class:LinkedList
+main	Algorithms_Data_Structures/Math/MathCode.java	/^    public static void main(String[] args){$/;"	m	class:MathCode
+main	Algorithms_Data_Structures/Stacks/ArrayStack.java	/^    public static void main(String args[]){$/;"	m	class:ArrayStack
+merge	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^    public void merge(int[] l, int[] r, int[] a){$/;"	m	class:SortingAlgorithms
+mergeSort	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^    public void mergeSort(int[] arr){$/;"	m	class:SortingAlgorithms
+next	Algorithms_Data_Structures/Lists/LinkedList.java	/^        public Node<E> next;$/;"	f	class:LinkedList.Node
+overFlow	Algorithms_Data_Structures/Stacks/ArrayStack.java	/^    public int[] overFlow(int[] oldArr){$/;"	m	class:ArrayStack
+partition	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^    public int partition(int [] arr, int start, int end){$/;"	m	class:SortingAlgorithms
+pop	Algorithms_Data_Structures/Stacks/ArrayStack.java	/^    public int pop(){$/;"	m	class:ArrayStack
+printArr	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^    public void printArr(int s){$/;"	m	class:SortingAlgorithms
+printList	Algorithms_Data_Structures/Lists/LinkedList.java	/^    public void printList(){$/;"	m	class:LinkedList
+printStack	Algorithms_Data_Structures/Stacks/ArrayStack.java	/^    public void printStack(){    $/;"	m	class:ArrayStack
+push	Algorithms_Data_Structures/Stacks/ArrayStack.java	/^    public boolean push(int data){$/;"	m	class:ArrayStack
+quickSort	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^    public void quickSort(int[] arr, int start, int end){$/;"	m	class:SortingAlgorithms
+remove	Algorithms_Data_Structures/Lists/LinkedList.java	/^    public boolean remove(int index){$/;"	m	class:LinkedList
+setArray	Algorithms_Data_Structures/Arrays/Arrays.java	/^   public void setArray(int[] arr){$/;"	m	class:Arrays
+setArray	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^    public void setArray(int[] a){$/;"	m	class:SortingAlgorithms
+setArray	Algorithms_Data_Structures/BinarySearch/BinarySearch.java	/^    public void setArray(int[] arr){$/;"	m	class:BinarySearch
+setData	Algorithms_Data_Structures/Lists/LinkedList.java	/^        public void setData(E newData){$/;"	m	class:LinkedList.Node
+setNext	Algorithms_Data_Structures/Lists/LinkedList.java	/^        public void setNext(Node<E> newNext){$/;"	m	class:LinkedList.Node
+setSorting	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^    public void setSorting(int s){$/;"	m	class:SortingAlgorithms
+setVar	Algorithms_Data_Structures/Math/MathCode.java	/^    public void setVar(int newVar){$/;"	m	class:MathCode
+sieve	Algorithms_Data_Structures/Math/MathCode.java	/^    public int[] sieve(int N){$/;"	m	class:MathCode
+size	Algorithms_Data_Structures/Lists/LinkedList.java	/^    private int size;$/;"	f	class:LinkedList	file:
+size	Algorithms_Data_Structures/Lists/LinkedList.java	/^    public int size(){$/;"	m	class:LinkedList
+size	Algorithms_Data_Structures/Stacks/ArrayStack.java	/^    private int size = 0;$/;"	f	class:ArrayStack	file:
+sort	Algorithms_Data_Structures/BinarySearch/BinarySearch.java	/^    public int sort(int x){$/;"	m	class:BinarySearch
+sorting	Algorithms_Data_Structures/Arrays/SortingAlgorithms.java	/^    private int sorting;$/;"	f	class:SortingAlgorithms	file:
+tail	Algorithms_Data_Structures/Lists/LinkedList.java	/^    private Node<E> tail;$/;"	f	class:LinkedList	file:
+top	Algorithms_Data_Structures/Stacks/ArrayStack.java	/^    private int top = -1;$/;"	f	class:ArrayStack	file:
+top	Algorithms_Data_Structures/Stacks/ArrayStack.java	/^    public int top(){$/;"	m	class:ArrayStack
+var	Algorithms_Data_Structures/Math/MathCode.java	/^    public int var;$/;"	f	class:MathCode
