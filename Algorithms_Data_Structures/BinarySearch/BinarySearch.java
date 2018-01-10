@@ -33,6 +33,11 @@ public class BinarySearch {
     public void setArray(int[] arr){
         array = arr;
     }
+
+    public void swag(){
+	System.out.println("Hello there Buddy");
+    }
+
     
     // BinarySearch
 
@@ -70,6 +75,7 @@ public class BinarySearch {
         BinarySearch sortBruv = new BinarySearch(arr);  
         int sortThing;
         sortThing = sortBruv.sort(16);
+	sortBruv.Worked
 
         if(sortThing != -1){
             System.out.println("Found your item at index: " + sortThing);
