@@ -11,13 +11,12 @@ class MaxHeap
     // Methods:
     // Max_heapify, build_max_heap, insert, extract_max, heapsort
 
-    protected:
+    private:
         int *heap;
-        int size = 0;
-        ;
+        int size;    
 
     public:
-        MaxHeap(){
+        MaxHeap(int arr[] = []): heap(buildMaxHeap(arr)), size(length(arr)) {
             intilize();
         }
 

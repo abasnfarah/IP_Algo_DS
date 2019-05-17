@@ -155,7 +155,8 @@ def main():
     print(heap)
     heap.insert(6)
     print(heap)
-    print(heap.heapSort(heap.getHeap()))
+    arr = heap.getHeap()
+    print(heap.heapSort(arr))
 
 
 def left(x):
