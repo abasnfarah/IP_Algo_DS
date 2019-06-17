@@ -1,3 +1,13 @@
+"""
+    This is the Class definition for the Heap DataStructure using an array represented as a tree.
+
+    insertion O(1)
+    heapify O(lgn)
+    buildHeap O(nlgn)
+    heapSort O(nlgn)
+
+    
+"""
 import operator
 import math
 
