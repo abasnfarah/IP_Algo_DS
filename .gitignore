@@ -2,3 +2,16 @@ tags
 
 *.class
 
+# Byte Compiled Files
+__pycache__/
+*.py[cod]
+
+*.so
+
+#unit Testing
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
