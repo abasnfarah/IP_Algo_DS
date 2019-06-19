@@ -18,21 +18,6 @@
 from quickSort import partition
 import random
 
-# This is the same partitioning scheme from the non-randomized quicksort
-#def partition(A, p, r):
-#    x = A[r]
-#    i = p-1
-#    for j in range(p,r):
-#        if A[j]<=x:
-#            i = i + 1
-#            temp = A[i]
-#            A[i] = A[j]
-#            A[j] = temp
-#    temp = A[i+1]
-#    A[i+1] = A[r]
-#    A[r] = temp
-#    return i + 1
-
 def randomized_Partition(A, p, r):
     i = random.randint(p,r)
     temp = A[r]

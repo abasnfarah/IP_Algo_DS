@@ -37,11 +37,3 @@ def quickSort(A, p, r):
         quickSort(A, p, q-1)
         quickSort(A, q+1, r)
 
-def main():
-    A = [2,8,7,1,3,5,6,4]
-    quickSort(A, 0, len(A) -1 )
-    print(A)
-
-main()
-
-
