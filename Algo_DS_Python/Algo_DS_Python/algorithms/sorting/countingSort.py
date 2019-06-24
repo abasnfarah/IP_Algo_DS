@@ -20,7 +20,6 @@ def countingSort(A, k):
     # Creating a new array
     c = [None] * (k +1)
 
-    print(len(c))
     # Populates our counter array to all zeros
     for i in range(0, k + 1):
         c[i] = 0
@@ -34,23 +33,13 @@ def countingSort(A, k):
     for i in range(1, k+1):
         c[i] = c[i] + c[i-1]
 
-    B = []
-    for j in range(len(A), 1, -1):
-        B[c[A[j]]] = A[j]
-        C[A[j]] = C[A[j]] - 1
+    B = [None] * (len(A))
 
-    A = B
+    for j in range(len(A) - 1, -1, -1):
+        print(j)
+        B[c[A[j]] - 1] = A[j]
+        c[A[j]] = c[A[j]] - 1
 
-def main():
-    A = [2,5,3,0,2,3,0,3]
-    countingSort(A, 5)
-
-    print(A)
+    return B
 
 
-
-
-
-
-
-main()
