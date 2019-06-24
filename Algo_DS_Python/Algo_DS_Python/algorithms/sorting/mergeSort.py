@@ -29,10 +29,3 @@ def mergeSort(x):
     lx = mergeSort(lx)
     return merge(nx,lx)
 
-def main():
-    x = [6,3,2,8,1,21,4,7]
-    x = mergeSort(x) 
-    print(x)
-
-
-main()

@@ -83,11 +83,3 @@ void binaryInsertionSort(int arr[], int n)
 
 }
 
-int main() {
-    int a[] = {6,3,2,8,1,21,4,7};
- 
-    binaryInsertionSort(a, 8);
-
-    print_array(a, 8);
-
-}

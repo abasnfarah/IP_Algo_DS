@@ -9,9 +9,3 @@ def insertionSort(arr):
             j-= 1
         arr[j] = s
 
-def main():
-    x = [3,6,2,8,1,21,4,7]
-    insertionSort(x)
-    print(x)
-
-main()

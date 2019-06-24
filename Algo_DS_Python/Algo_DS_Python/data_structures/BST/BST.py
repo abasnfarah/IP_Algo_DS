@@ -96,34 +96,3 @@ def printTree(tree):
         print(tree.getVal())
         printTree(tree.getRight())
 
-        # This uses Binary Search taking O(height) time
-    # If tree is balanced then takes (Olgn) time
-    #def find(self, val):
-
-
-# Traversal takes O(n) time
-# Using preorder Traversal
-# def getSize(tree):
-
-# Gets Height of Tree Based get items in Tree
-# Traverses the Tree and keeps a running height total
-# Takes O(n) time
-# def getHeight(tree):
-
-
-#def main():
-#    tree = BST(4)
-#    tree.insert(2)
-#    tree.insert(1)
-#    tree.insert(3)
-#    tree.insert(6)
-#    tree.insert(5)
-#    tree.insert(7)
-#    print(tree.isEmpty())
-#    printTree(tree.getTree())
-#    print("Does Tree have 6")
-#    print(tree.find(6))
-#    print("Does Tree have 8")
-#    print(tree.find(8))
-#
-#main()
