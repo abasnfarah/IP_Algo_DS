@@ -12,167 +12,171 @@
            1    3      5   7                   1   3
 """
 
-#Methods for AVL_BST class==> Insert, Right-Rotate, left-rotate, AVL_Sort
-from BST.BST import Node, BST, printTree
 #importing Copy for compy operations
 import copy
 
-class AVL_Node(Node):
-    def __init__(self, val, parent=None, isLeft=None):
-        Node.__init__(self, val)
-        self._parent = parent
-        self._height = 0
-        self._isLeft = isLeft
+class AVL_Node(): 
+    def __init__(self, val):
+        self.val = val
+        self.right = None
+        self.left = None
+        self.height = 0
 
-    # Getter and setter for height atribute
-    def getHeight(self):
-        return self._height
+class AVL_BST():
 
-    def setHeight(self, height):
-        self._height = height
-
-    def isLeft(self):
-        return self._isLeft
-
-    def setIsLeft(self, isLeft):
-        self._isLeft = isLeft
-
-    #Getter and Setters for parent attribute
-    def getParent(self):
-        return self._parent
-
-    def setParent(self, parent):
-        self._parent = parent
-
-    #Overiding Setter variables from parent class
-    def setRight(self, right):
-        self._right = right
-
-    def setLeft(self, left):
-        self._left = left
-
-
-class AVL_BST(BST):
     def __init__(self, val=None):
-        self.tree = None if val is None else AVL_Node(val)
+        self.tree = none if val is None else AVL_Node(val)
 
-    def setTree(self, tree):
-        self.tree = tree
+    def getTree(self):
+        return self.tree
 
-    def balanceHeights(self, tree):
-        if(tree.getRight() != None and tree.getLeft() != None):
-            tree.setHeight(1 + max(tree.getLeft().getHeight(), tree.getRight().getHeight()))
-        elif(tree.getRight() != None and Tree.getLeft() == None):
-            tree.setHeight(1 + tree.getRight().getHeight())
-        elif(tree.getRight() == None and Tree.getLeft() != None):
-            tree.setHeight(1 + tree.getLeft().getHeight())
+    def heightIfExists(self, node):
+        if node is None:
+            return -1
         else:
-            tree.setHeight(0)
+            return node.height
 
+    # This method gets the new height of parent based off children heights 
+    def newHeight(self, node):
+        l = self.heightIfExists(node.left)
+        r = self.heightIfExists(node.right)
 
-    #This rotates a sub tree to the left
-    def leftRotate(self, x):
+        return max(l,r) + 1
 
-        # Rotation Step
-        # Doing shallow copy so changes on y reflect on x.Left
-        y = copy.copy(x.getRight())
-        x.setRight(y.getLeft())
-        y.setLeft(x)
+    def getDifference(self, node):
+        l = self.heightIfExists(node.left)
+        r = self.heightIfExists(node.right)
 
-       # Set New Heights now
-        self.balanceHeights(x)
-        self.balanceHeights(y)
+        return abs(l - r)
 
-        # Updating the state of X and Y
-        if(x.getParent() != None):
-            y.setParent(x.getParent())
-            y.setIsLeft(x.isLeft())
-            parent = copy.copy(y.getParent())
-            if(y.isLeft() == True):
-                parent.setLeft(y)
+    # This function returns 0 if left heavy and 1 if right Heavy and -1 if equal
+    def rightOrLeftHeavy(self, root):
+        if(root == None):
+            return -1
+        else:
+            # need childrens heights
+
+            l = self.heightIfExists(root.left)
+            r = self.heightIfExists(root.right)
+
+            if l == r:
+                return -1
+            elif( l > r):
+                return 0
             else:
-                parent.setRight(y)
-        else:
-            y.setParent(None)
-            y.setIsLeft(None)
+                return 1
 
-        x.setParent(y)
-        x.setIsLeft(True)
+    # This does a right Rotation of sub trees at root x
+    def right_Rotation(self, x):
+        y = x.left
+        b = y.right
 
-        b = copy.copy(x.getRight())
-        if(b != None):
-            b.setIsLeft(False)
-            b.setParent(x)
+        # Rotating Variables
+        y.right = x
+        x.left = b
+
+        #Updating Heights
+        x.height = newHeight(x)
+        y.height = newHeight(y) 
+
+        return y
+
+    def left_Rotation(self, x):
+        y = x.right
+        b = y.left
+
+        # rotating
+        y.left = x
+        x.right = b
+
+        #updating Heights
+        x.height = newHeight(x)
+        y.height = newHeight(y) 
 
         return y
 
 
-    def rightRotate(self, x):
-        # Rotation Step
-        # Doing shallow copy so changes on y reflect on x.Left
-        y = copy.copy(x.getLeft())
-        x.setLeft(y.getRight())
-        y.setRight(x)
+    def wInsert(self, root, val):
 
-       # Set New Heights now
-        self.balanceHeights(x)
-        self.balanceHeights(y)
+        # The actual inserting just like our BST Class
+        # base case
+        if(root == None):
+            root = AVL_Node(val)
+        elif(val > root.val):
+            self.wInsert(root.right, val)
+        elif(val < root.val):
+            self.wInsert(root.left, val)
 
-        # Updating the state of X and Y
-        if(x.getParent() != None):
-            y.setParent(x.getParent())
-            y.setIsLeft(x.isLeft())
-            parent = copy.copy(y.getParent())
-            if(y.isLeft() == True):
-                parent.setLeft(y)
-            else:
-                parent.setRight(y)
-        else:
-            y.setParent(None)
-            y.setIsLeft(None)
+        # now need to reGet Height after insert
+        root.height = self.newHeight(root)
 
-        x.setParent(y)
-        x.setIsLeft(False)
+        # Getting differences of sub tree heights and if root is right or left heavy
+        d = self.getDifference(root)
+        h = self.rightOrLeftHeavy(root)
 
-        b = copy.copy(x.getLeft())
-        if(b != None):
-            b.setIsLeft(True)
-            b.setParent(x)
+        # now we have four cases to rotate, 1.left, 2.right, 3.leftRight, 4.rightLeft
+        #Case 1 0r 3
+        if( d > 1 and h == 1):
 
-        #changing x to y so not suck in sub directory
-        return y
+            # now we need to check if its a left or leftRight case
+            # w is equal to -1,0,1 depending if root.right
+            w = self.rightOrLeftHeavy(root.right)
 
-    # This is a overwriting function to insert AVL_Nodes 
-    # in this class vs Nodes from BST Parent class
-    def insertWrapper(self, tree, val):
-        if( val > tree.getVal()):
-            if(tree.getRight() == None):
-                tree.setRight(AVL_Node(val, tree, False))
-            else:
-                self.insertWrapper(tree.getRight(), val)
-        else:
-            if(tree.getLeft() == None):
-                tree.setLeft(AVL_Node(val, tree, True))
-            else:
-                self.insertWrapper(tree.getLeft(), val)
+            # if w = 0 or -1 then just left heavy and leftrotate
+            # if w = 1 then right heavy and need a rightRotate(root.right) then leftRotate
+            if(w == 1 or w == -1):
+                root = self.left_Rotation(root)
+            elif(w == 0):
+                root.right = self.right_Rotation(root.right)
+                root = self.left_Rotation(root)
 
-    # this takes O(height) time to insert as well due to binary 
+        # Now we need to check for a right or rightLeft case
+        if( d > 1 and h == 0):
 
+            # now we nned to right or left case
+            # w is equal to -1 0 1 depending if root.right
+            w = self.rightOrLeftHeavy(root.left)
+
+            # if w = 1 then just right heavy and right_rotate
+            # if w = 0 or -1 then left heavy and left rotate(root.right) then right rotate
+            if(w == -1 or w == 0):
+                root = self.right_Rotation(root)
+            elif(w == 1):
+                root.left = self.left_Rotation(root.left)
+                root = self.right_Rotation
+
+    # This takes a val inserts it then as it ascedes to top it rotates to keep balance
     def insert(self, val):
-        if(self.tree == None):
-            self.tree = AVL_Node(val)
+        if(self.tree== None):
+            self.tree= AVL_Node(val)
         else:
-            self.insertWrapper(self.tree, val)
+            self.wInsert(self.tree, val)
+
+    # prints Tree using inOrder traversal
+    def printTree(self,node):
+        if( node != None):
+            self.printTree(node.right)
+            print(node.val)
+            self.printTree(node.left)
+
+
+
 
 def main():
-    tree = AVL_BST(4)
-    tree.insert(2)
-    tree.insert(1)
-    tree.insert(3)
-    tree.insert(6)
-    tree.insert(5)
-    tree.insert(7)
-    tree.setTree(tree.rightRotate(tree.getTree()))
-    printTree(tree.getTree())
+    x = AVL_BST(11)
+    x.insert(20)
+    x.insert(26)
+    x.insert(29)
+    x.insert(41)
+    x.insert(50)
+    x.insert(65)
+    x.printTree(x.getTree())
 
 main()
+
+
+
+
+
+
+
