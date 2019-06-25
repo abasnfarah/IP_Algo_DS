@@ -15,7 +15,7 @@
   After partitioning you sort the two subarrays by recursive calls to quicksort.
 
 """
-from quickSort import partition
+from Algo_DS_Python.algorithms.sorting.quickSort import partition
 import random
 
 def randomized_Partition(A, p, r):
@@ -26,13 +26,14 @@ def randomized_Partition(A, p, r):
     return partition(A, p, r)
 
 
-def randomized_QuickSort(A, p, r):
+def wRandomized_QuickSort(A, p, r):
     if p<r:
         q = randomized_Partition(A, p, r)
-        randomized_QuickSort(A, p, q-1)
-        randomized_QuickSort(A, p, r)
+        wRandomized_QuickSort(A, p, q-1)
+        wRandomized_QuickSort(A, q+1, r)
 
-
+def randomized_QuickSort(A):
+    wRandomized_QuickSort(A,0,len(A) - 1)
 
 
 

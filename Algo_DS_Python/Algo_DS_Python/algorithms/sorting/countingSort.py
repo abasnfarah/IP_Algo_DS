@@ -36,7 +36,6 @@ def countingSort(A, k):
     B = [None] * (len(A))
 
     for j in range(len(A) - 1, -1, -1):
-        print(j)
         B[c[A[j]] - 1] = A[j]
         c[A[j]] = c[A[j]] - 1
 

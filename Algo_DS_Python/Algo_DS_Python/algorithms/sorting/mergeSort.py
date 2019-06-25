@@ -21,7 +21,7 @@ def merge(x,y):
 
 
 def mergeSort(x):
-    if len(x)  == 1:
+    if len(x)  == 1 or len(x) == 0:
         return x
     nx = x[0:len(x)//2]
     lx = x[len(x)//2:len(x)] 

@@ -31,9 +31,12 @@ def partition(A, p, r):
     A[r] = temp
     return i + 1
 
-def quickSort(A, p, r):
+def wQuickSort(A, p, r):
     if p<r:
         q = partition(A, p, r)
-        quickSort(A, p, q-1)
-        quickSort(A, q+1, r)
+        wQuickSort(A, p, q-1)
+        wQuickSort(A, q+1, r)
+
+def quickSort(A):
+    wQuickSort(A,0, len(A)-1)
 
