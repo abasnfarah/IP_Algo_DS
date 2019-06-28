@@ -85,19 +85,3 @@ class ListQueue:
         self.size -= 1
         return element
 
-
-x = ListQueue()
-x.enqueue(1)
-x.enqueue(2)
-x.enqueue(3)
-
-print(x.dequeue())
-print(x.dequeue())
-print(x.dequeue())
-
-
-
-
-
-
-
