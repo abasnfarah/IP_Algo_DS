@@ -49,12 +49,21 @@ class LinkedList:
         elif( self.head == None):
 
             # if index doesn't equal zero and we have nothing in list then raise exception
-            if (index != 0 or index != None):
+            if (index != 0 and index != None):
                 raise ValueError("Index out of bounds, No items in linkedList")
 
             else:
                 self.head = Node(data)
                 self.size = 1
+
+        # Need to insert at head of item
+        elif(index == 0):
+
+            newNode = Node(data)
+            newNode.next = copy.copy(self.head)
+            self.head = newNode
+            self.size += 1
+
 
         else:
             ptr = copy.copy(self.head)
@@ -70,6 +79,8 @@ class LinkedList:
             # raising exception
             if(ptr == None):
                 raise ValueError("Index Out of bounds. linkedList is " + str(self.size) + " items Long")
+
+            #if index is 0 just need to insert at head
             else:
                 newNode = Node(data)
                 tail.next = newNode
@@ -81,10 +92,15 @@ class LinkedList:
         # Exception handling if index is out of bounds
         if(index > self.size - 1):
             raise ValueError("Index Out of bounds. linkedList is " + str(self.size) + " items long")
+
+        elif(index == 0):
+            self.head = self.head.next
+            self.size -= 1
+
         else:
 
             #iterate through list till item is found
-            ptr = self.head
+            ptr = copy.copy(self.head)
             tail = None
             count = 0
 
@@ -93,8 +109,19 @@ class LinkedList:
                 tail = ptr
                 ptr = ptr.next
 
-            tail.next = ptr.next
+            if(tail != None):
+                tail.next = ptr.next
+
             self.size -= 1
+            if(self.size == 0):
+                self.head = None
+
+    def getHead(self):
+
+        if(self.size == 0):
+            return None
+        else:
+            return self.head.data
 
 
 

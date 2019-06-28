@@ -11,6 +11,14 @@
         Atributes: stack, size
         Methods: push, pop, peek
 
+    Functions utilizing the Stack data Structure:
+        reverseString()
+        checkForBalancedParentheses()
+        infixToPrefix()
+        infixToPostfix()
+        prefix()
+        postfix()
+
 """
 
 # Using linkedList python implementation 
@@ -136,12 +144,10 @@ def checkBalancedParentheses(inputString):
     for i in inputString:
         # if we have a opening paren then push to stack
         if(i == '(' or i == '{' or i == '[' ):
-            print(i)
             strStack.push(i)
         # Once a closing paren is given we need to check if it is balanced
         # if our input matches then we keep going or return false
         elif(i == ')' or i =='}' or i == ']'):
-            print(i)
             if(strStack.isEmpty()):
                 return False
             x = strStack.pop()
@@ -156,6 +162,260 @@ def checkBalancedParentheses(inputString):
         return True
     else:
         return False
+
+# This function takes two operands x and s and returns true if s has lower precedence then x
+def lowerPrecedence(x, s):
+    if ((x == '*' and s == '+') or (x == '*' and s == '-')):
+        return True
+    elif ((x == '/' and s == '+') or (x == '/' and s == '-')): 
+        return True
+    else :
+        return False
+
+
+# This method takes a infix expression: (1 + 2) * 5 --> 1 2 5 + *
+# The order of operants never change A + b * C --> A B C + * 
+def infixToPostfix(s):
+
+    strStack = ArrayStack()
+    postfix = ''
+
+    # Check if infix has balanced paren
+    if(checkBalancedParentheses(s) == False):
+        print("infix expression not balanced")
+        return s
+
+    for x in s:
+
+        if (x == '*' or x == '+' or x == '-' or x == '/' or x == '(' or x == ')'):
+            # need to check if stack is empty
+            if(strStack.isEmpty()):
+                strStack.push(x)
+
+            # If whats on the stack has lower precedence then we can just push
+            elif( lowerPrecedence(x, strStack.peek()) ):
+                strStack.push(x)
+
+            # Now x is either above a opening paren or lowerPrecedence
+            elif( strStack.peek() == '('):
+                strStack.push(x)
+
+            elif( x == '(' ):
+                strStack.push(x)
+
+            # Since we hit a closing paren we need to pop and write all operators
+            elif( x == ')'):
+                operatorString = ''
+                # now we need to traverse the stack till we hit a closing paren
+                while((strStack.isEmpty() == False) and strStack.peek() != '('):
+                    operatorString += strStack.pop()
+
+                # After the loop we hit a opening bracket and need to pop once more to get rid of it
+                postfix += operatorString
+                strStack.pop()
+
+            # now we know that x is lowerPrecedence then whats on the stack 
+            # not surrounded by a paren. in this case we pop the stack till 
+            # it's empty or we hit a opening paren and write to our return string
+            else:
+                while((strStack.isEmpty() == False) and strStack.peek() != '('):
+                    postfix += strStack.pop()
+
+                strStack.push(x)
+
+
+        # if x doesn't equal a space, operator  or paren then we can just push
+        elif( x != ' '):
+            postfix += x
+
+    # now we want to push whats left in the stack to the return string
+    while(strStack.isEmpty() == False):
+        postfix += strStack.pop()
+    return postfix
+
+# This method takes a infix expression: (1 + 2) * 5 --> *+125
+# The order of operants never change A + b * C --> *+ABC
+
+def infixToPrefix(s):
+
+    strStack = ArrayStack()
+    prefix = ''
+
+    # Check if infix has balanced paren
+    if(checkBalancedParentheses(s) == False):
+        print("infix expression not balanced")
+        return s
+
+    for x in s:
+
+        if (x == '*' or x == '+' or x == '-' or x == '/' or x == '(' or x == ')'):
+            # need to check if stack is empty
+            if(strStack.isEmpty()):
+                strStack.push(x)
+
+            # If whats on the stack has lower precedence then we can just push
+            elif( lowerPrecedence(x, strStack.peek()) ):
+                strStack.push(x)
+
+            # Now x is either above a opening paren or lowerPrecedence
+            elif( strStack.peek() == '('):
+                strStack.push(x)
+
+            elif( x == '(' ):
+                strStack.push(x)
+
+            # Since we hit a closing paren we need to pop and write all operators
+            elif( x == ')'):
+                operatorString = ''
+                # now we need to traverse the stack till we hit a closing paren
+                while((strStack.isEmpty() == False) and strStack.peek() != '('):
+                    operatorString = strStack.pop() + operatorString
+
+                # After the loop we hit a opening bracket and need to pop once more to get rid of it
+                prefix = operatorString + prefix
+                strStack.pop()
+
+            # now we know that x is lowerPrecedence then whats on the stack 
+            # not surrounded by a paren. in this case we pop the stack till 
+            # it's empty or we hit a opening paren and write to our return string
+            else:
+                while((strStack.isEmpty() == False) and strStack.peek() != '('):
+                    prefix = strStack.pop() + prefix
+
+                strStack.push(x)
+
+
+        # if x doesn't equal a space, operator  or paren then we can just push
+        elif( x != ' '):
+            prefix += x
+
+    # now we want to push whats left in the stack to the return string
+    while(strStack.isEmpty() == False):
+        prefix = strStack.pop() + prefix
+    return prefix
+
+
+
+# This evaluates a prefix expression x and returns an integer value
+# Assume that the string passed is a valid postfix expression
+def postfix(s):
+
+    # create a stack to hold operants
+    operantStack = ListStack()
+    value = 0
+
+    # Now we will go through the string and evaulate the expression
+    for x in s:
+        # we'll check for operant
+        if (x == '*' or x == '/' or x == '-' or x == '+'):
+            # now we need to pop last two values
+            A = operantStack.pop()
+            B = operantStack.pop()
+
+            if(x == '*'):
+                value = B * A
+                operantStack.push(value)
+            elif(x == '/'):
+                value = B / A
+                operantStack.push(value)
+            elif(x == '-'):
+                value = B - A
+                operantStack.push(value)
+            elif(x == '+'):
+                value = B + A
+                operantStack.push(value)
+        elif (x != ' '):
+           y = int(x) 
+           operantStack.push(y)
+
+    return operantStack.pop()
+
+
+# This function evaluates a prefix expression and returns a integer value
+# Assume that the string passed is a valid postfix expression
+def prefix(s):
+    # Create a stack to hold operants
+    operantStack = ArrayStack()
+    value = 0
+
+    # Now we will go through the string and evaluate the expression
+    for x in reversed(s):
+        # We will check for operant
+        if (x == '*' or x == '/' or x == '-' or x == '+'):
+
+            B = operantStack.pop()
+            A = operantStack.pop()
+
+            if(x == '*'):
+                value = B * A
+                operantStack.push(value)
+            elif(x == '/'):
+                value = B / A
+                operantStack.push(value)
+            elif(x == '-'):
+                value = B - A
+                operantStack.push(value)
+            elif(x == '+'):
+                value = B + A
+                operantStack.push(value)
+        elif (x != ' '):
+           y = int(x) 
+           operantStack.push(y)
+
+    return operantStack.pop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
