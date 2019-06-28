@@ -27,6 +27,8 @@ class LinkedList:
     def __init__(self, data=None):
         self.head = None if data is None else Node(data)
         self.size= 0 if data is None else 1
+        # Added tail to make queue data structure implementation using linked list O(1) dequeue
+        self.tail = None if data is None else self.head
 
     # This insert method has O(n) complexity becuase in the worst-case
     # it has to traverse every element in the list.
@@ -46,6 +48,8 @@ class LinkedList:
             tail.next = Node(data)
             self.size += 1
 
+            self.tail = tail.next
+
         elif( self.head == None):
 
             # if index doesn't equal zero and we have nothing in list then raise exception
@@ -55,6 +59,8 @@ class LinkedList:
             else:
                 self.head = Node(data)
                 self.size = 1
+
+                self.tail = self.head
 
         # Need to insert at head of item
         elif(index == 0):
@@ -86,6 +92,17 @@ class LinkedList:
                 tail.next = newNode
                 newNode.next = ptr
                 self.size += 1
+
+    def insertTail(self, data):
+        if( self.size == 0):
+            self.head = Node(data)
+            self.tail = self.head
+            self.size += 1
+        else:
+            newNode = Node(data)
+            self.tail.next = newNode
+            self.tail = self.tail.next
+            self.size += 1
 
     def delete(self, index):
 
@@ -123,6 +140,12 @@ class LinkedList:
         else:
             return self.head.data
 
+    def getTail(self):
+
+        if(self.size == 0):
+            return None
+        else:
+            return self.tail.data
 
 
     def printList(self):

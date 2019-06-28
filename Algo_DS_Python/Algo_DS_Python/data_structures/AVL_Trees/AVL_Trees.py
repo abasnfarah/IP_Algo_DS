@@ -25,7 +25,7 @@ class AVL_Node():
 class AVL_BST():
 
     def __init__(self, val=None):
-        self.tree = none if val is None else AVL_Node(val)
+        self.tree = None if val is None else AVL_Node(val)
 
     def getTree(self):
         return self.tree
@@ -76,8 +76,8 @@ class AVL_BST():
         x.left = b
 
         #Updating Heights
-        x.height = newHeight(x)
-        y.height = newHeight(y) 
+        x.height = self.newHeight(x)
+        y.height = self.newHeight(y) 
 
         return y
 
@@ -90,8 +90,8 @@ class AVL_BST():
         x.right = b
 
         #updating Heights
-        x.height = newHeight(x)
-        y.height = newHeight(y) 
+        x.height = self.newHeight(x)
+        y.height = self.newHeight(y)
 
         return y
 
@@ -102,9 +102,13 @@ class AVL_BST():
         # base case
         if(root == None):
             root = AVL_Node(val)
-        elif(val > root.val):
+        elif((val > root.val) and root.right == None):
+            root.right = AVL_Node(val)
+        elif((val > root.val) and root.right != None):
             self.wInsert(root.right, val)
-        elif(val < root.val):
+        elif((val < root.val) and root.left == None):
+            root.left = AVL_Node(val)
+        elif((val < root.val) and root.left != None):
             self.wInsert(root.left, val)
 
         # now need to reGet Height after insert
@@ -155,21 +159,23 @@ class AVL_BST():
     # prints Tree using inOrder traversal
     def printTree(self,node):
         if( node != None):
-            self.printTree(node.right)
-            print(node.val)
             self.printTree(node.left)
+            print(node.val)
+            self.printTree(node.right)
 
 
 
 
 def main():
-    x = AVL_BST(11)
+    x = AVL_BST()
     x.insert(20)
-    x.insert(26)
+    x.insert(4)
+    x.insert(3)
+    x.insert(1)
+    x.insert(2)
     x.insert(29)
     x.insert(41)
     x.insert(50)
-    x.insert(65)
     x.printTree(x.getTree())
 
 main()
