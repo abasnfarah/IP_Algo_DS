@@ -20,11 +20,12 @@ import sys
 
 # Node with a value and right and left children
 class Node:
-    def __init__(self, val):
+    def __init__(self, val, parent=None):
         self.val = val
         #self.key = key
         self.right= None
         self.left= None
+        self.parent = None
 
 class BST:
     tree = None
@@ -71,6 +72,69 @@ class BST:
                 ptr = ptr.right if ptr.val < val else ptr.left
         return False
 
+    # this returns the element once found
+    def getFind(self, val):
+        ptr = self.tree
+        while(ptr != None):
+            if(ptr.val == val):
+                return ptr
+            else:
+                ptr = ptr.right if ptr.val < val else ptr.left
+
+        # if ptr is None then element doesn't exist in BST
+        return None
+
+    # This returns a Node that is the max element in this tree
+    def findMax(self, node):
+        if(node == None):
+            return None
+        elif(node.right == None):
+            return node
+        else:
+            return self.findMax(node.right)
+
+    # This takes in a node and drills it's subtree to find minimim element in tree
+    def findMin(self, node):
+        if(node == None):
+            return None
+        elif(node.left == None):
+            return Node
+        else:
+            return self.findMax(node.left)
+
+
+    # This deletes a certain node if it finds the data 
+    # This uses three cases
+    # Case 1: if node to be deleted has no child, then just change it to None
+    # Case 2: if node to be deleted has one child then just change link from parent to it's child node
+    # Case 3 if node to be deleted has two children then will find max in left and copy the value in targetted node. Then delete duplicate
+    def delete(self, val):
+        self.tree = self.deleteUtil(self.tree, val)
+
+    def deleteUtil(self, root, val): 
+        if(root == None):
+            return root
+        elif(val < root.val):
+            root.left = self.deleteUtil(root.left, val)
+        elif(val > root.val):
+            root.right = self.deleteUtil(root.right, val)
+        else:
+            # case 1: No child
+            if ( root.left == None and root.right == None):
+                root = None
+            # case 2: One child
+            elif( root.right == None):
+                root = root.left
+            elif(root.left == None):
+                root = root.right
+            # case 3: Two children
+            else:
+                temp = self.findMax(root.left)
+                root.val= temp.val
+                root.left = self.deleteUtil(root.left, temp.val)
+
+        return root
+
 # This Prints the Tree Using In-Order-Traversal
 def printTree(root):
     if (root!= None):
@@ -87,7 +151,17 @@ def findMin(tree):
     while(root.left != None):
         root = root.left
 
-    return root.val
+    return root
+
+def findMinNode(root):
+    if(root == None):
+        print("ERROR: The tree is empty")
+        return None
+    while(root.left != None):
+        root = root.left
+
+    return root
+
 
 # This funciton finds the max element in BST
 def findMax(tree):
@@ -164,10 +238,11 @@ def postorder(root):
         postorder(root.right)
         print(root.val)
 
-# This function takes a root Node as imput and checks if it is a BST following the given invariant
+# These two functions takes a root Node as imput and checks if it is a BST following the given invariant
 # That the left subtree L rooted at R is less then R.val and the right subtree is greater then R.val
-# This uses isSubtreeLesser and isSubtreeGreater as subroutines
-def isBinaryTree(root):
+
+# This uses inorder traversal and puts elements in an array. If the array isn't sorted then it is not a BST
+def isBinarySearchTreeInorder(root):
     outputBoolean = True
     if(root != None):
         nodeList = inorderList(root)
@@ -180,4 +255,47 @@ def isBinaryTree(root):
                 outputBoolean = False
 
     return outputBoolean
+
+# This traverses the Tree using upper and lower limits to see if the node fits in the limit
+# If the node doesn't fall within the limit then the BST isn't a BST
+def isBinarySearchTree(root):
+    return isBSTUtil(root.getTree(), -sys.maxsize -1, sys.maxsize)
+
+def isBSTUtil(root, minValue, maxValue):
+    if (root == None):
+        return True
+    elif( root.val > minValue and root.val < maxValue
+            and isBSTUtil(root.left, minValue, root.val)
+            and isBSTUtil(root.right, root.val, maxValue)):
+        return True
+    else:
+        return False
+
+# The running time of this algorithm is O(h) where h is the height of tree
+# If tree is balanced the running time is O(Lgn)
+def inOrderSuccessor(root, val):
+    # Need to find the node to compare
+    current = root.getFind(val)
+    if(current == None):
+        return None
+    # Case 1 Node has right subtree
+    if(current.right != None):
+        return findMinNode(current.right)
+    else:
+        successor = None
+        ancestor = root.getTree()
+        while(ancestor != current):
+            if(current.val < ancestor.val):
+                successor = ancestor
+                ancestor = ancestor.left
+            else:
+                ancestor = ancestor.right
+        return successor
+
+
+
+
+
+
+
 
