@@ -15,7 +15,12 @@
   After partitioning you sort the two subarrays by recursive calls to quicksort.
 
 """
-from Algo_DS_Python.algorithms.sorting.quickSort import partition
+import os
+import sys
+dirpath = os.path.dirname(os.path.abspath(__file__))
+sys.path.append('.')
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from quickSort import partition
 import random
 
 def randomized_Partition(A, p, r):

@@ -22,7 +22,15 @@
 """
 
 # Using linkedList python implementation 
-from Algo_DS_Python.data_structures.linkedList.linkedList import LinkedList
+import sys
+import os
+# Getting directory of script being run
+dirpath = os.path.dirname(os.path.abspath(__file__))
+sys.path.append('.')
+# Adding dependency module to our python PATH
+sys.path.append(dirpath + "/../linkedList")
+
+from linkedList import LinkedList
 
 # Class definition of arrayStack
 class ArrayStack:
@@ -120,6 +128,9 @@ class ListStack:
 
     def getList(self):
         return self.stack
+
+    def printStack(self):
+        self.stack.printList()
 
 # O(n) time
 def reverseString(x):
@@ -363,41 +374,6 @@ def prefix(s):
            operantStack.push(y)
 
     return operantStack.pop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

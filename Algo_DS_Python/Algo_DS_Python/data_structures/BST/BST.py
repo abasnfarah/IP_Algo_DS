@@ -10,8 +10,18 @@
              / \        / \                            \
            1    3      5   7                            3
 """
-from Algo_DS_Python.data_structures.queue.queue import ListQueue
+
 import sys
+import os
+# Using Queue python implementation
+# Getting directory of script being run
+dirpath = os.path.dirname(os.path.abspath(__file__))
+sys.path.append('.')
+# Adding dependency module to our python PATH
+sys.path.append(dirpath + '/../..')
+print(sys.path)
+from data_structures.queue.queue import ListQueue
+
 # Class For BST 
 # Methods for class :
 #   isEmpty, find, findMin, findmax, insert, delete, height, 
@@ -291,6 +301,13 @@ def inOrderSuccessor(root, val):
             else:
                 ancestor = ancestor.right
         return successor
+
+
+
+
+
+
+
 
 
 

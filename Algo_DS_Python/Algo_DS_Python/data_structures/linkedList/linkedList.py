@@ -30,6 +30,18 @@ class LinkedList:
         # Added tail to make queue data structure implementation using linked list O(1) dequeue
         self.tail = None if data is None else self.head
 
+
+    def __str__(self):
+        ptr = self.head
+        returnString = ''
+        for i in range(0, self.size):
+            returnString += " " + str(ptr.data)
+            ptr = ptr.next
+
+        if(self.size == 0):
+            returnString = 'None'
+
+        return returnString
     # This insert method has O(n) complexity becuase in the worst-case
     # it has to traverse every element in the list.
     # We will assume if no index is provided to insert at the very end of the list
@@ -133,6 +145,24 @@ class LinkedList:
             if(self.size == 0):
                 self.head = None
 
+    def deleteItem(self, item):
+        # Looping through list to find element then removing it from list
+        # if our pointer is none will just exit function
+        if(self.size != 0):
+            if(self.size == 1 and self.head.data == item):
+                self.head == None
+                self.size -= 1
+            ptr = self.head
+            tail = None
+            while(ptr != None and ptr.data != item):
+                tail = ptr
+                ptr = ptr.next
+
+            if( ptr != None):
+                tail.next = ptr.next
+                self.size -= 1
+
+
     def getHead(self):
 
         if(self.size == 0):
@@ -219,11 +249,26 @@ class LinkedList:
             q.next = p
 
 
+    def find(self,item):
+        if(self.size == 0):
+            return False
+        elif(self.size == 1):
 
+            value = True if self.head.data == item else False
+            return value
 
+        else:
 
+            # Iterate through list till element is found
+            ptr = self.head
+            while(ptr != None and ptr.data == item):
+                ptr = ptr.next
 
+            # if element is found then ptr is not None
+            if(ptr != None):
+                return True
 
+            return False
 
 
 

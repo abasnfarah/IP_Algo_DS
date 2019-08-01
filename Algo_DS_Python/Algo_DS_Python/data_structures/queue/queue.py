@@ -14,7 +14,16 @@
 """
 
 # Using linkedList python implementation
-from Algo_DS_Python.data_structures.linkedList.linkedList import LinkedList
+import sys
+import os
+# Getting directory of script being run
+dirpath = os.path.dirname(os.path.abspath(__file__))
+sys.path.append('.')
+# Adding dependency module to our python PATH
+sys.path.append(dirpath + "/../linkedList")
+
+from linkedList import LinkedList
+
 
 # Class definition for arrayQueue
 # We are using the logical view that our queue is in a circular array.
@@ -84,4 +93,10 @@ class ListQueue:
         self.queue.delete(0)
         self.size -= 1
         return element
+
+
+
+
+
+
 
