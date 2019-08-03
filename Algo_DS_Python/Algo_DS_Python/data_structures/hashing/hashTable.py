@@ -30,7 +30,9 @@ from linkedList import LinkedList
 # To see an implentation of a dynamic hash table look at HashTableOA
 class HashTableC:
     def __init__(self, item=None):
-        self.hashTable = [LinkedList()]* 31
+        self.hashTable = [None]*31
+        for i in range(0,len(self.hashTable)):
+            self.hashTable[i] = LinkedList()
         if (item != None):
             self.Insert(item)
 
@@ -50,7 +52,8 @@ class HashTableC:
 
         index = self.hashFunction(key)
 
-        self.hashTable[index].insertHead(item)
+
+        self.hashTable[index].insert(item,0)
 
     def delete(self, item):
         key = hash(item)
@@ -65,10 +68,4 @@ class HashTableC:
 
         return self.hashTable[index].find(item)
 
-#x = HashTableC()
-#x.insert(10)
-#x.insert(5)
-#x.insert(30)
-#x.delete(5)
-#x.printHF()
-#
+

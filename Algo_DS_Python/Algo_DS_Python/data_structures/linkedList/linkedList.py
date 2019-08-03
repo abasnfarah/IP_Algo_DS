@@ -31,11 +31,11 @@ class LinkedList:
         self.tail = None if data is None else self.head
 
 
-    def __str__(self):
+    def __repr__(self):
         ptr = self.head
         returnString = ''
         for i in range(0, self.size):
-            returnString += " " + str(ptr.data)
+            returnString += " --> " + str(ptr.data)
             ptr = ptr.next
 
         if(self.size == 0):
