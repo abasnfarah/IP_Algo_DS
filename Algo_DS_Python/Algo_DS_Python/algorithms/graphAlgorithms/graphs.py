@@ -43,13 +43,13 @@ def genAdjecencyList():
 
 adjecencyList = genAdjecencyList()
 
-dag = [['A',['C']],
-       ['B',['C','E']],
-       ['C',['D']],
-       ['E',['F']],
-       ['D',['F']],
-       ['F',['G']],
-       ['G',[]]]
+dag = {'A':['C'],
+       'B':['C','E'],
+       'C':['D'],
+       'E':['F'],
+       'D':['F'],
+       'F':['G'],
+       'G':[]}
 
 
 

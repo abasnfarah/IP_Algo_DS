@@ -28,9 +28,9 @@ import os
 dirpath = os.path.dirname(os.path.abspath(__file__))
 sys.path.append('.')
 # Adding dependency module to our python PATH
-sys.path.append(dirpath + "/../linkedList")
+sys.path.append(dirpath + "/../")
 
-from linkedList import LinkedList
+from linkedList.linkedList import LinkedList
 
 # Class definition of arrayStack
 class ArrayStack:
