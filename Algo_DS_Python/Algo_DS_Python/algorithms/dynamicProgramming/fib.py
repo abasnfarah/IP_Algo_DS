@@ -21,11 +21,11 @@ def fib(n):
 
 # Basic memoized algorithm for fib 
 # The runtime for this algorithm is O(n) but also uses O(N) space (A lot faster!!!)
-def fibMemo(n,memo={}):
+def fibMemo(n,memo={1:1,0:0}):
     if(n in memo):
         return memo[n]
     else:
-        f = fib(n-1) + fib(n-2)
+        f = fibMemo(n-1,memo) + fibMemo(n-2,memo)
         memo[n] = f
         return f
 
@@ -63,7 +63,7 @@ def fibMemoBottomUpOptimized(n):
     return f1
 
 if __name__=="__main__":
-    print(fibMemoBottomUpOptimized(10))
+    print(fibMemo(10))
 
 
 
